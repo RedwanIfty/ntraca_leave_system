@@ -47,23 +47,23 @@
                 </div>
             </div>
 
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{-- <img class="rounded-circle header-profile-user" src="{{asset('assets\images\users\avatar-1.jpg')}}" alt="Header Avatar"> --}}
-                    <i style="color: red; hight:20px" class="fas fa-bell">8</i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ url('/pending/application') }}">Name:Reason</a>
-                    <a class="dropdown-item" href="{{ url('/pending/application') }}">সব দেখুন</a>
-                </div>
-            </div>
+{{--            <div class="dropdown d-inline-block">--}}
+{{--                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"--}}
+{{--                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                    --}}{{-- <img class="rounded-circle header-profile-user" src="{{asset('assets\images\users\avatar-1.jpg')}}" alt="Header Avatar"> --}}
+{{--                    <i style="color: red; hight:20px" class="fas fa-bell">8</i>--}}
+{{--                </button>--}}
+{{--                <div class="dropdown-menu dropdown-menu-right">--}}
+{{--                    <a class="dropdown-item" href="{{ url('/pending/application') }}">Name:Reason</a>--}}
+{{--                    <a class="dropdown-item" href="{{ url('/pending/application') }}">সব দেখুন</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{-- <img class="rounded-circle header-profile-user" src="{{asset('assets\images\users\avatar-1.jpg')}}" alt="Header Avatar"> --}}
-                    <i style="color: red; hight:20px" class="fas fa-bell">23</i>
+                    <i style="color: red; hight:20px" class="fas fa-bell">1</i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="#">Reason:অনুমোদিত</a>
@@ -76,16 +76,17 @@
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{-- <img class="rounded-circle header-profile-user" src="{{asset('assets\images\users\avatar-1.jpg')}}" alt="Header Avatar"> --}}
-                    <span class="d-none d-xl-inline-block ml-1">{{ session()->get('username') }}</span>
+                    <span class="d-none d-xl-inline-block ml-1">{{ auth()->user()->username }}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
-                    @if ($req = session()->get('role') == 2)
+
+                    @if (auth()->user()->role == 2)
                         <a class="dropdown-item" href="{{ url('/admin/profile') }}"><i
                                 class="bx bx-user font-size-16 align-middle mr-1"></i> প্রোফাইল</a>
                     @endif
-                    @if ($req = session()->get('role') == 3)
+                    @if (auth()->user()->role == 3)
                         <a class="dropdown-item" href="{{ url('/employee/profile') }}"><i
                                 class="bx bx-user font-size-16 align-middle mr-1"></i> প্রোফাইল</a>
                     @endif
