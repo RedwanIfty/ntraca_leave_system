@@ -89,9 +89,19 @@
                         <a class="dropdown-item" href="{{ url('/employee/profile') }}"><i
                                 class="bx bx-user font-size-16 align-middle mr-1"></i> প্রোফাইল</a>
                     @endif
-                    <a class="dropdown-item text-danger" href="/logout"><i
-                            class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>প্রস্থান
-                        করুন</a>
+{{--                    <a class="dropdown-item text-danger" href="/logout"><i--}}
+{{--                            class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>প্রস্থান--}}
+{{--                        করুন</a>--}}
+
+                    <a class="dropdown-item" href="{{ route('logout') }}"  onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">প্রস্থান
+                        করুন</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
