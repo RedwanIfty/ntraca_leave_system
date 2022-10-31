@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home', [DashboardController::class, 'index']);
+Route::get('home', [DashboardController::class, 'index'])->name('home');
 Route::get('admin/create', [AdminController::class, 'create'])->name('admin.create');
 Route::post('admin/create', [AdminController::class, 'store'])->name('admin.store');
 Route::get('admin/list', [AdminController::class, 'list'])->name('admin.list');

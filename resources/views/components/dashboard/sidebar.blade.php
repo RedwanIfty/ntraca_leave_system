@@ -5,7 +5,7 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">মেনু</li>
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('home') }}" class="waves-effect">
                         <i class="bx bx-home-circle"></i><span class="badge badge-pill badge-info float-right"></span>
                         <span>ড্যাশবোর্ড</span>
                     </a>
@@ -18,6 +18,16 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.list') }}">অ্যাডমিন তালিকা</a></li>
                         <li><a href="{{ route('admin.create') }}">অ্যাডমিন যোগ করুন</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-user"></i>
+                        <span>কর্মকর্তা/কর্মচারী</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="#">কর্মকর্তা/কর্মচারী যোগ করুন</a></li>
+                        <li><a href="#">কর্মকর্তা/কর্মচারী তালিকা</a></li>
                     </ul>
                 </li>
 
@@ -35,16 +45,7 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-user"></i>
-                        <span>কর্মকর্তা/কর্মচারী</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">কর্মকর্তা/কর্মচারী যোগ করুন</a></li>
-                        <li><a href="#">কর্মকর্তা/কর্মচারী তালিকা</a></li>
-                    </ul>
-                </li>
+
             </ul>
         </div>
     </div>
