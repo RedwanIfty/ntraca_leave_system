@@ -16,8 +16,8 @@
                         <span>অ্যাডমিন</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">অ্যাডমিন যোগ করুন</a></li>
-                        <li><a href="#">অ্যাডমিন তালিকা</a></li>
+                        <li><a href="{{ route('admin.list') }}">অ্যাডমিন তালিকা</a></li>
+                        <li><a href="{{ route('admin.create') }}">অ্যাডমিন যোগ করুন</a></li>
                     </ul>
                 </li>
 

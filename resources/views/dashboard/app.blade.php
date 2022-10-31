@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.js"></script>
     <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+    @yield('css')
 </head>
 
 <body data-sidebar="dark">
@@ -39,7 +40,7 @@
             <div class="page-content">
                 <div class="container-fluid">
                     <!-- content -->
-                    @yield('main_contant')
+                    @yield('content')
                     <!-- ./content -->
 
                     <x-dashboard.footer />
@@ -80,6 +81,7 @@
 
     <script src="{{ asset('assets\js\app.js') }}"></script>
     <script src="{{ asset('assets\js\pages\datatables.init.js') }}"></script>
+    @yield('js')
 </body>
 
 </html>
