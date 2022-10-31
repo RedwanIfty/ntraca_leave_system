@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\AdminController;
+use App\Http\Controllers\Web\EmployeeController;
 use App\Http\Controllers\Web\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,5 @@ Route::get('home', [DashboardController::class, 'index'])->name('home');
 Route::get('admin/create', [AdminController::class, 'create'])->name('admin.create');
 Route::post('admin/create', [AdminController::class, 'store'])->name('admin.store');
 Route::get('admin/list', [AdminController::class, 'list'])->name('admin.list');
+
+Route::get('employee/list', [EmployeeController::class, 'list'])->name('employee.list');

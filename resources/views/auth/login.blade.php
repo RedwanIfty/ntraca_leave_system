@@ -5,16 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets\images\log.png') }}">
+    <link rel="shortcut icon" href="{{ url('public/assets/images/log.png') }}">
 
     <title>নৈমিত্তিক ছুটি ব্যবস্থাপনা</title>
 
     <!-- Bootstrap Css -->
-    <link href="{{ asset('assets\css\bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css">
+    <link href="{{ url('public/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css">
     <!-- Icons Css -->
-    <link href="{{ asset('assets\css\icons.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url('public/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <!-- App Css-->
-    <link href="{{ asset('assets\css\app.min.css') }}" id="app-style" rel="stylesheet" type="text/css">
+    <link href="{{ url('public/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
-                                    <img src="{{ asset('assets/images/profile-img.png') }}" alt=""
+                                    <img src="{{ url('public/assets/images/profile-img.png') }}" alt=""
                                         class="img-fluid">
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                                 <a>
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="{{ asset('assets/images/log.png') }}" alt=""
+                                            <img src="{{ url('public/assets/images/log.png') }}" alt=""
                                                 class="rounded-circle" height="34">
                                         </span>
                                     </div>
@@ -93,14 +93,14 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ url('public/assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url('public/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url('public/assets/libs/metismenu/metisMenu.min.js') }}"></script>
+    <script src="{{ url('public/assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ url('public/assets/libs/node-waves/waves.min.js') }}"></script>
 
     <!-- App js -->
-    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ url('public/assets/js/app.js') }}"></script>
 </body>
 
 </html>

@@ -16,8 +16,9 @@
                         <span>অ্যাডমিন</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.list') }}">অ্যাডমিন তালিকা</a></li>
                         <li><a href="{{ route('admin.create') }}">অ্যাডমিন যোগ করুন</a></li>
+                        <li><a href="{{ route('admin.list') }}">অ্যাডমিন তালিকা</a></li>
+
                     </ul>
                 </li>
                 <li>
@@ -27,7 +28,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="#">কর্মকর্তা/কর্মচারী যোগ করুন</a></li>
-                        <li><a href="#">কর্মকর্তা/কর্মচারী তালিকা</a></li>
+                        <li><a href="{{ route('employee.list') }}">কর্মকর্তা/কর্মচারী তালিকা</a></li>
                     </ul>
                 </li>
 
