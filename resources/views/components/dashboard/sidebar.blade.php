@@ -13,6 +13,17 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-user"></i>
+                        <span>Super Admin</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.create') }}">অ্যাডমিন যোগ করুন</a></li>
+                        <li><a href="{{ route('admin.list') }}">অ্যাডমিন তালিকা</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-user"></i>
                         <span>অ্যাডমিন</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
