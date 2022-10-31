@@ -166,6 +166,8 @@ return [
          * Package Service Providers...
          */
         App\Providers\FortifyServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Rakibhstu\Banglanumber\NumberToBanglaServiceProvider::class,
 
         /*
          * Application Service Providers...

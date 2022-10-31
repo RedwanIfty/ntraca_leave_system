@@ -26,7 +26,8 @@
     <!-- App Css-->
     <link rel="stylesheet" href="{{ url('public/assets/css/app.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
-
+    <script src="{{ url('public/assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url('public/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     @yield('css')
 </head>
 
@@ -59,8 +60,7 @@
 
     <!-- JAVASCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.js"></script>
-    <script src="{{ url('public/assets/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ url('public/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
     <script src="{{ url('public/assets/libs/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ url('public/assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ url('public/assets/libs/node-waves/waves.min.js') }}"></script>

@@ -115,6 +115,10 @@
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition" />
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
+      <path value="$PROJECT_DIR$/vendor/rakibhstu/number-to-bangla" />
+      <path value="$PROJECT_DIR$/vendor/ronisaha/easy-bangla-date" />
+      <path value="$PROJECT_DIR$/vendor/rajurayhan/bndatetime" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

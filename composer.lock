@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a740738a9d089dbd14fd99555a68bb6d",
+    "content-hash": "08271ee754f399e8946265d514b4b261",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2924,6 +2924,105 @@
             "time": "2022-07-28T14:25:11+00:00"
         },
         {
+            "name": "rajurayhan/bndatetime",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rajurayhan/bndatetime.git",
+                "reference": "e5e5f49aeee7a036250b428a018261658ab5dda4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rajurayhan/bndatetime/zipball/e5e5f49aeee7a036250b428a018261658ab5dda4",
+                "reference": "e5e5f49aeee7a036250b428a018261658ab5dda4",
+                "shasum": ""
+            },
+            "require": {
+                "ronisaha/easy-bangla-date": "dev-master"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rajurayhan\\Bndatetime\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raju Rayhan",
+                    "email": "raju.rayhan@yandex.com"
+                }
+            ],
+            "description": "English to Bangla Date Time Converter for Laravel.",
+            "support": {
+                "issues": "https://github.com/rajurayhan/bndatetime/issues",
+                "source": "https://github.com/rajurayhan/bndatetime/tree/master"
+            },
+            "time": "2019-07-09T05:43:23+00:00"
+        },
+        {
+            "name": "rakibhstu/number-to-bangla",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rakibdevs/number-to-bangla.git",
+                "reference": "50f240b944b3a5307d55a9bae7e9f81a9523488f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rakibdevs/number-to-bangla/zipball/50f240b944b3a5307d55a9bae7e9f81a9523488f",
+                "reference": "50f240b944b3a5307d55a9bae7e9f81a9523488f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^7.2|^7.3|^7.4|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rakibhstu\\Banglanumber\\NumberToBanglaServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rakibhstu\\Banglanumber\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Md. Rakibul Islam",
+                    "email": "rakib1708@gmail.com",
+                    "homepage": "https://rakibul.dev"
+                }
+            ],
+            "description": "Laravel package to convert English numbers to Bangla number or Bangla text, Bangla month name and Bangla Money Format",
+            "homepage": "https://github.com/rakibdevs/number-to-bangla",
+            "keywords": [
+                "Laravel-number-bangla",
+                "laravel",
+                "number-bangla",
+                "number-month"
+            ],
+            "support": {
+                "issues": "https://github.com/rakibdevs/number-to-bangla/issues",
+                "source": "https://github.com/rakibdevs/number-to-bangla/tree/v1.4.0"
+            },
+            "time": "2022-09-24T07:27:10+00:00"
+        },
+        {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
             "source": {
@@ -3139,6 +3238,63 @@
                 }
             ],
             "time": "2022-09-16T03:22:46+00:00"
+        },
+        {
+            "name": "ronisaha/easy-bangla-date",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ronisaha/easy-bangla-date.git",
+                "reference": "bae41f86401854a31bf8465e7d85e4fe892908eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ronisaha/easy-bangla-date/zipball/bae41f86401854a31bf8465e7d85e4fe892908eb",
+                "reference": "bae41f86401854a31bf8465e7d85e4fe892908eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5",
+                "satooshi/php-coveralls": "^0.6"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "EasyBanglaDate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roni Saha",
+                    "email": "roni.cse@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extended DateTime Class For Bangla Date and Time",
+            "homepage": "http://ronisaha.github.io/easy-bangla-date/",
+            "keywords": [
+                "Bangla",
+                "Bangla Date",
+                "Bangla DateTime"
+            ],
+            "support": {
+                "issues": "https://github.com/ronisaha/easy-bangla-date/issues",
+                "source": "https://github.com/ronisaha/easy-bangla-date"
+            },
+            "time": "2018-06-07T00:46:13+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5686,6 +5842,91 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "yajra/laravel-datatables-oracle",
+            "version": "v9.21.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-datatables.git",
+                "reference": "a7fd01f06282923e9c63fa27fe6b391e21dc321a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/a7fd01f06282923e9c63fa27fe6b391e21dc321a",
+                "reference": "a7fd01f06282923e9c63fa27fe6b391e21dc321a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.8.*|^6|^7|^8|^9",
+                "illuminate/filesystem": "5.8.*|^6|^7|^8|^9",
+                "illuminate/http": "5.8.*|^6|^7|^8|^9",
+                "illuminate/support": "5.8.*|^6|^7|^8|^9",
+                "illuminate/view": "5.8.*|^6|^7|^8|^9",
+                "php": "^7.1.3|^8"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.8|^4.0|^5.0|^6.0|^7.0"
+            },
+            "suggest": {
+                "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTables.",
+                "yajra/laravel-datatables-editor": "Plugin to use DataTables Editor (requires a license).",
+                "yajra/laravel-datatables-fractal": "Plugin for server-side response using Fractal.",
+                "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTables."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Yajra\\DataTables\\DataTablesServiceProvider"
+                    ],
+                    "aliases": {
+                        "DataTables": "Yajra\\DataTables\\Facades\\DataTables"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helper.php"
+                ],
+                "psr-4": {
+                    "Yajra\\DataTables\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "jQuery DataTables API for Laravel 5|6|7|8|9",
+            "keywords": [
+                "datatables",
+                "jquery",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/yajra/laravel-datatables/issues",
+                "source": "https://github.com/yajra/laravel-datatables/tree/v9.21.2"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/yajra",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/yajra",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-07-12T04:48:03+00:00"
         }
     ],
     "packages-dev": [
@@ -8060,7 +8301,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "rajurayhan/bndatetime": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

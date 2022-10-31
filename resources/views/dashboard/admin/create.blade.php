@@ -80,7 +80,7 @@
                                         @foreach($branches as $branch)
                                             <option value="{{$branch->branch_id  }}">স{{$branch->branch_name }}</option>
                                         @endforeach
-                                       
+
                                     </select>
                                 </div>
                                 <div class="card"></div>
