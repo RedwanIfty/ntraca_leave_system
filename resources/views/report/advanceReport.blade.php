@@ -41,7 +41,7 @@
                     <table id="appointmentTable" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                         <tr>
-                            <th>ID</th>
+{{--                            <th>ID</th>--}}
                             <th>নাম</th>
                             <th>পদবী</th>
                             <th>মেয়াদকাল শুরু</th>
@@ -113,7 +113,7 @@
                     },
                 },
                 columns: [
-                    {data: 'id', name: 'applications.id'},
+                    // {data: 'id', name: 'applications.id'},
                     {data: 'first_name', name: 'employees.first_name'},
                     {data: 'designation_name', name: 'designations.designation_name'},
                     {data: 'start', name: 'start'},
