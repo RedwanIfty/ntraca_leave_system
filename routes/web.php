@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\AdminController;
+use App\Http\Controllers\Web\BranchController;
 use App\Http\Controllers\Web\EmployeeController;
 use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\DesignationController;
@@ -29,11 +30,12 @@ Route::get('admin/list', [AdminController::class, 'list'])->name('admin.list');
 
 Route::get('employee/list', [EmployeeController::class, 'list'])->name('employee.list');
 
+Route::resource('designation', DesignationController::class);
+Route::resource('branch', BranchController::class);
+
 //---------------------- Advance Report  ---------------------------------------------//
 Route::get('/report', [ReportController::class, 'index'])->name('report');
 Route::post('/report', [ReportController::class, 'data'])->name('get.report');
-
-Route::resource('designation', DesignationController::class);
 
 // Undefined Routes
 Route::get('/{url}', function () {

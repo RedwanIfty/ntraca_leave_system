@@ -9,16 +9,16 @@
                         <!-- <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100"> -->
                         <thead>
                             <tr>
-                                <th>পদবি নাম</th>
+                                <th>শাখা নাম</th>
                                 <th>পদক্ষেপ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($designations as $designation)
+                            @foreach ($branches as $branch)
                                 <tr>
-                                    <td>{{ $designation->designation_name }}</td>
+                                    <td>{{ $branch->branch_name }}</td>
                                     <td>
-                                        <a href="{{ route('designation.edit', $designation->designation_id) }}"
+                                        <a href="{{ route('branch.edit', $branch->branch_id) }}"
                                             data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                 class="bx bx-edit"></i></a>
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i

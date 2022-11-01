@@ -18,7 +18,6 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.create') }}">অ্যাডমিন যোগ করুন</a></li>
                         <li><a href="{{ route('admin.list') }}">অ্যাডমিন তালিকা</a></li>
-
                     </ul>
                 </li>
                 <li>
@@ -29,7 +28,16 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('designation.index') }}">পদবি তালিকা</a></li>
                         <li><a href="{{ route('designation.create') }}">পদবি যোগ করুন</a></li>
-
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-user"></i>
+                        <span>শাখা</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('branch.index') }}">শাখা তালিকা</a></li>
+                        <li><a href="{{ route('branch.create') }}">শাখা যোগ করুন</a></li>
                     </ul>
                 </li>
                 <li>
