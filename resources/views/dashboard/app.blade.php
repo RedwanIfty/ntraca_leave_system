@@ -34,8 +34,7 @@
 <body data-sidebar="dark">
     <div id="layout-wrapper">
         <x-dashboard.navbar />
-{{--        <x-dashboard.sidebar />--}}
-        @include('components.dashboard.sidebar')
+        <x-dashboard.sidebar />
 
 
         <div class="main-content">
@@ -77,9 +76,9 @@
     <script src="{{ url('public/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ url('public/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- apexcharts -->
-{{--    <script src="{{ url('public/assets/libs/apexcharts/apexcharts.min.js') }}"></script>--}}
+    {{--    <script src="{{ url('public/assets/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
     <!-- Saas dashboard init -->
-{{--    <script src="{{ url('public/assets/js/pages/saas-dashboard.init.js') }}"></script>--}}
+    {{--    <script src="{{ url('public/assets/js/pages/saas-dashboard.init.js') }}"></script> --}}
 
     <script src="{{ url('public/assets/js/app.js') }}"></script>
     <script src="{{ url('public/assets/js/pages/datatables.init.js') }}"></script>
