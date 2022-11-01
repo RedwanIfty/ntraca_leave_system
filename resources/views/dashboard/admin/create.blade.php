@@ -18,44 +18,14 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="POST" action="#" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="first_name">নাম</label>
-                                    <input id="first_name" name="first_name" type="text" value="{{ old('first_name') }}"
-                                        class="form-control">
-                                    @if ($errors->has('first_name'))
-                                        <div style="color:red"> {{ $errors->first('first_name') }}</div>
-                                    @endif
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="phone">মোবাইল</label>
-                                    <input id="phone" name="phone" type="text" value="{{ old('phone') }}"
-                                        class="form-control">
-                                    @if ($errors->has('phone'))
-                                        <div style="color:red"> {{ $errors->first('phone') }}</div>
-                                    @endif
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">ইমেইল</label>
-                                    <input id="email" name="email" type="text" value="{{ old('email') }}"
-                                        class="form-control">
-                                    @if ($errors->has('email'))
-                                        <div style="color:red"> {{ $errors->first('email') }}</div>
-                                    @endif
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="password">পাসওয়ার্ড</label>
-                                    <input id="password" name="password" type="password" value="{{ old('password') }}"
-                                        class="form-control">
-                                    @if ($errors->has('password'))
-                                        <div style="color:red"> {{ $errors->first('password') }}</div>
-                                    @endif
-                                </div>
+                                <x-auth.input id='fullname' type='text' label='নাম' />
+                                <x-auth.input id='phone' type='text' label='মোবাইল' />
+                                <x-auth.input id='email' type='email' label='ইমেইল' />
+                                <x-auth.input id='password' type='password' label='পাসওয়ার্ড' />
                             </div>
 
                             <div class="col-sm-6">
@@ -64,10 +34,10 @@
                                     <!-- <input id="department" name="department" type="text" value="{{ old('department') }}" class="form-control"> -->
                                     <select name="designation" id="department" class="form-control" required>
                                         <option selected disabled>নির্বাচন করুন</option>
-                                        @foreach($designations as $desg)
-                                            <option value="{{$desg->designation_id }}">স{{$desg->designation_name }}</option>
+                                        @foreach ($designations as $desg)
+                                            <option value="{{ $desg->designation_id }}">{{ $desg->designation_name }}
+                                            </option>
                                         @endforeach
-
                                     </select>
                                     @if ($errors->has('department'))
                                         <div style="color:red"> {{ $errors->first('department') }}</div>
@@ -77,10 +47,9 @@
                                     <label class="control-label">শাখা</label>
                                     <select name="branch" class="form-control select2">
                                         <option selected disabled>নির্বাচন করুন</option>
-                                        @foreach($branches as $branch)
-                                            <option value="{{$branch->branch_id  }}">স{{$branch->branch_name }}</option>
+                                        @foreach ($branches as $branch)
+                                            <option value="{{ $branch->branch_id }}">স{{ $branch->branch_name }}</option>
                                         @endforeach
-
                                     </select>
                                 </div>
                                 <div class="card"></div>
