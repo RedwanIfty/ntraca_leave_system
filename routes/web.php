@@ -40,6 +40,9 @@ Route::post('/weekday-count', [ApplicationController::class,'WeekDayCount'])->na
 Route::post('application/store', [ApplicationController::class,'ApplicationStore'])->name('application.store');
 Route::get('application/own-list', [ApplicationController::class,'OwnApplicationList'])->name('application.own.list');
 Route::post('application/own-list/data', [ApplicationController::class, 'data'])->name('application.own.list.data');
+Route::post('application/waiting-list/data', [ApplicationController::class, 'waitingData'])->name('application.waiting.list.data');
+
+Route::get('application/waiting-list', [ApplicationController::class,'WaitingApplicationList'])->name('application.waiting.list');
 
 //---------------------- Advance Report  ---------------------------------------------//
 Route::get('/report', [ReportController::class, 'index'])->name('report');

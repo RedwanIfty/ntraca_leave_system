@@ -116,19 +116,49 @@ class ApplicationController extends Controller
 
     }
 
+    public function WaitingApplicationList(){
+        $status=ApplicationStatus::get();
+        $emp=Employee::select('id','first_name')->get();
+
+
+        return view('application.waiting',compact('emp','status'));
+    }
+
+    public function waitingData(Request $r){
+        $emp=Employee::select('id','first_name')->where('user_id',auth()->user()->id)->first();
+        $numto = new NumberToBangla();
+        $dateConverter  =  new  BnDateTimeConverter();
+        $applications =Application::select("*")
+            ->leftJoin('application_status','application_status.id','applications.status')
+            ->leftJoin('employees','employees.id','applications.employee_id')
+            ->leftJoin('designations','employees.designation','designations.designation_id')
+            ->where('applications.approval_id',$emp->id);
+        if($r->empName){
+            $applications=$applications->where('employee_id',$r->empName);
+        }
+
+        if($r->start_dt){ $applications=$applications->where('start','>=',$r->start_dt);}
+        if($r->end_dt){ $applications=$applications->where('end','<=',$r->end_dt);}
+        if($r->status){ $applications=$applications->where('status',$r->status);}
+
+        $applications=$applications->get();
+        $datatables = Datatables::of($applications)
+            ->addColumn('total_days_bangla',function ($data) use ($numto){
+                return $numto->bnNum($data->applied_total_days);
+            })
+            ->addColumn('start',function ($data) use ($dateConverter){
+                return  $dateConverter->getConvertedDateTime($data->start_date,  'BnEn', 'l jS F Y');
+            })->addColumn('end',function ($data) use ($dateConverter){
+                return  $dateConverter->getConvertedDateTime($data->end_date,  'BnEn', 'l jS F Y');
+            });
+        return $datatables->make(true);
+
+    }
     public function OwnApplicationList()
     {
-//        $emp=Employee::where('user_id',auth()->user()->id)->first();
-//        $applications = Application::Where('employee_id', $emp->id)
-//            ->leftJoin('application_status','application_status.id','applications.status')
-//            ->get();
-
         $status=ApplicationStatus::get();
         $emp=Employee::select('id','first_name')->where('user_id',auth()->user()->id)->get();
-        // $applications=$applications->employee_id;
-        //   $applications=Application::find($applications);
 
-//        return $applications;
 
         return view('application.applicationlist',compact('emp','status'));
     }
