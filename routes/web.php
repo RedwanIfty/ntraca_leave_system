@@ -39,6 +39,7 @@ Route::get('application/form', [ApplicationController::class, 'ApplicationForm']
 Route::post('/weekday-count', [ApplicationController::class,'WeekDayCount'])->name('WeekDayCount');
 Route::post('application/store', [ApplicationController::class,'ApplicationStore'])->name('application.store');
 Route::get('application/own-list', [ApplicationController::class,'OwnApplicationList'])->name('application.own.list');
+Route::post('application/own-list/data', [ApplicationController::class, 'data'])->name('application.own.list.data');
 
 //---------------------- Advance Report  ---------------------------------------------//
 Route::get('/report', [ReportController::class, 'index'])->name('report');

@@ -58,9 +58,9 @@ class ReportController extends Controller
                 return $numto->bnNum($data->applied_total_days);
             })
             ->addColumn('start',function ($data) use ($dateConverter){
-                return  $dateConverter->getConvertedDateTime($data->start_date,  'BnEn', '');
+                return  $dateConverter->getConvertedDateTime($data->start_date,  'BnEn', 'l jS F Y');
             })->addColumn('end',function ($data) use ($dateConverter){
-                return  $dateConverter->getConvertedDateTime($data->end_date,  'BnEn', '');
+                return  $dateConverter->getConvertedDateTime($data->end_date,  'BnEn', 'l jS F Y');
             });
         return $datatables->make(true);
 
