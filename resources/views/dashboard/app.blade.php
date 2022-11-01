@@ -10,7 +10,7 @@
     <title>নৈমিত্তিক ছুটি ব্যবস্থাপনা</title>
 
     <!-- select2 css -->
-{{--    <link rel="stylesheet" href="{{ url('public/assets/libs/select2/css/select2.min.css') }}">--}}
+    <link rel="stylesheet" href="{{ url('public/assets/libs/select2/css/select2.min.css') }}">
     <!-- bootstrap-datepicker css -->
     <link rel="stylesheet" href="{{ url('public/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
     <!-- DataTables -->
@@ -28,6 +28,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
     <script src="{{ url('public/assets/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ url('public/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- select2 -->
+
+{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />--}}
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
     @yield('css')
 </head>
 
@@ -35,7 +40,7 @@
     <div id="layout-wrapper">
         <x-dashboard.navbar />
         <x-dashboard.sidebar />
-{{--        @include('components.dashboard.sidebar')--}}
+
 
 
         <div class="main-content">
@@ -64,8 +69,7 @@
     <script src="{{ url('public/assets/libs/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ url('public/assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ url('public/assets/libs/node-waves/waves.min.js') }}"></script>
-    <!-- select2 -->
-    <script src="{{ url('public/assets/libs/select2/js/select2.min.js') }}"></script>
+
     <!-- bootstrap-datepicker js -->
     <script src="{{ url('public/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
@@ -77,13 +81,14 @@
     <script src="{{ url('public/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ url('public/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- apexcharts -->
-{{--    <script src="{{ url('public/assets/libs/apexcharts/apexcharts.min.js') }}"></script>--}}
+    {{--    <script src="{{ url('public/assets/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
     <!-- Saas dashboard init -->
-{{--    <script src="{{ url('public/assets/js/pages/saas-dashboard.init.js') }}"></script>--}}
+    {{--    <script src="{{ url('public/assets/js/pages/saas-dashboard.init.js') }}"></script> --}}
 
     <script src="{{ url('public/assets/js/app.js') }}"></script>
     <script src="{{ url('public/assets/js/pages/datatables.init.js') }}"></script>
     @yield('js')
+
 </body>
 
 </html>

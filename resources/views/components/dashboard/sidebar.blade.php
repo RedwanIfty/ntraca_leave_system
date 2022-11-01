@@ -13,23 +13,31 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-user"></i>
-                        <span>Super Admin</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.create') }}">অ্যাডমিন যোগ করুন</a></li>
-                        <li><a href="{{ route('admin.list') }}">অ্যাডমিন তালিকা</a></li>
-
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-user"></i>
                         <span>অ্যাডমিন</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.create') }}">অ্যাডমিন যোগ করুন</a></li>
                         <li><a href="{{ route('admin.list') }}">অ্যাডমিন তালিকা</a></li>
-
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-user"></i>
+                        <span>পদবি</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('designation.index') }}">পদবি তালিকা</a></li>
+                        <li><a href="{{ route('designation.create') }}">পদবি যোগ করুন</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-user"></i>
+                        <span>শাখা</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('branch.index') }}">শাখা তালিকা</a></li>
+                        <li><a href="{{ route('branch.create') }}">শাখা যোগ করুন</a></li>
                     </ul>
                 </li>
                 <li>
@@ -49,9 +57,9 @@
                         <span>আবেদন</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">আবেদন করুন</a></li>
+                        <li><a href="{{route('application.form')}}">আবেদন করুন</a></li>
                         <li><a href="#">ফেরৎ আবেদনের তালিকা</a></li>
-                        <li><a href="#">আমার আবেদন তালিকা</a></li>
+                        <li><a href="{{route('application.own.list')}}">আমার আবেদন তালিকা</a></li>
                         <li><a href="#">অপেক্ষমান তালিকা</a></li>
                         <li><a href="#">আবেদনকৃত তালিকা</a></li>
                     </ul>

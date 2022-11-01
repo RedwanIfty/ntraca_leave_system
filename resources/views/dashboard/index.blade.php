@@ -8,7 +8,8 @@
                     <div class="card" style="background-color:#683091; border-radius: 20px">
                         <div class="card-body" style="text-align: center">
                             <div style="text-align: center">
-                                <h3 style="text-align: center; color:#ffff !important" class="text-primary">স্বাগতম USERNAME
+                                <h3 style="text-align: center; color:#ffff !important" class="text-primary">স্বাগতম
+                                    {{ auth()->user()->username }}
                                     !</h3>
                             </div>
                         </div>

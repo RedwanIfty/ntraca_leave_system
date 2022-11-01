@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\Web\AdminController;
+use App\Http\Controllers\Web\BranchController;
 use App\Http\Controllers\Web\EmployeeController;
 use App\Http\Controllers\Web\DashboardController;
+use App\Http\Controllers\Web\DesignationController;
+use App\Http\Controllers\Web\ApplicationController;
 use App\Http\Controllers\Web\ReportController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +31,20 @@ Route::get('admin/list', [AdminController::class, 'list'])->name('admin.list');
 
 Route::get('employee/list', [EmployeeController::class, 'list'])->name('employee.list');
 
+Route::resource('designation', DesignationController::class);
+Route::resource('branch', BranchController::class);
+
+//---------------------- Application ---------------------------------------------//
+Route::get('application/form', [ApplicationController::class, 'ApplicationForm'])->name('application.form');
+Route::post('/weekday-count', [ApplicationController::class,'WeekDayCount'])->name('WeekDayCount');
+Route::post('application/store', [ApplicationController::class,'ApplicationStore'])->name('application.store');
+Route::get('application/own-list', [ApplicationController::class,'OwnApplicationList'])->name('application.own.list');
 
 //---------------------- Advance Report  ---------------------------------------------//
-Route::get('/report', [ReportController::class,'index'])->name('report');
-Route::post('/report', [ReportController::class,'data'])->name('get.report');
+Route::get('/report', [ReportController::class, 'index'])->name('report');
+Route::post('/report', [ReportController::class, 'data'])->name('get.report');
+
+// Undefined Routes
+Route::get('/{url}', function () {
+    abort(404);
+});
