@@ -58,10 +58,10 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('application.form')}}">আবেদন করুন</a></li>
-                        <li><a href="#">ফেরৎ আবেদনের তালিকা</a></li>
+{{--                        <li><a href="#">ফেরৎ আবেদনের তালিকা</a></li>--}}
                         <li><a href="{{route('application.own.list')}}">আমার আবেদন তালিকা</a></li>
                         <li><a href="{{route('application.waiting.list')}}">অপেক্ষমান তালিকা</a></li>
-                        <li><a href="#">আবেদনকৃত তালিকা</a></li>
+{{--                        <li><a href="#">আবেদনকৃত তালিকা</a></li>--}}
                     </ul>
                 </li>
 
