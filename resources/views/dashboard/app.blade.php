@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ url('public/assets/images/log.png') }}">
+{{--    <link rel="shortcut icon" href="{{ url('public/assets/images/log.png') }}">--}}
 
     <title>নৈমিত্তিক ছুটি ব্যবস্থাপনা</title>
 
     <!-- select2 css -->
-    <link rel="stylesheet" href="{{ url('public/assets/libs/select2/css/select2.min.css') }}">
+{{--    <link rel="stylesheet" href="{{ url('public/assets/libs/select2/css/select2.min.css') }}">--}}
     <!-- bootstrap-datepicker css -->
     <link rel="stylesheet" href="{{ url('public/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
     <!-- DataTables -->
@@ -34,8 +34,8 @@
 <body data-sidebar="dark">
     <div id="layout-wrapper">
         <x-dashboard.navbar />
-{{--        <x-dashboard.sidebar />--}}
-        @include('components.dashboard.sidebar')
+        <x-dashboard.sidebar />
+{{--        @include('components.dashboard.sidebar')--}}
 
 
         <div class="main-content">
