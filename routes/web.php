@@ -48,6 +48,8 @@ Route::get('/pending/application', [ApplicationController::class,'PendingApplica
 Route::get('/pending/approve/{id}', [ApplicationController::class,'applicationApprove'])->name('application.approve');
 Route::get('/pending/applicationModifyApprove/{id}', [ApplicationController::class,'applicationModifyApprove'])->name('application.modifyApprove');
 Route::post('/pending/applicationModifyApprove/{id}', [ApplicationController::class,'applicationModifyApproveStore'])->name('application.modifyApproveStore');
+Route::get('/application/reject/{id}', [ApplicationController::class,'rejectApplication'])->name('confirm.reject.application');
+Route::post('/application/reject/{id}', [ApplicationController::class,'rejectApplicationStore'])->name('reject.applicationStore');
 
 //---------------------- Advance Report  ---------------------------------------------//
 Route::get('/report', [ReportController::class, 'index'])->name('report');

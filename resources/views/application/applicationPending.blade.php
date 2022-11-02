@@ -22,9 +22,9 @@
                         @php
                             $total_days = $numto->bnNum($application->applied_total_days);
 
-                            $start=   $dateConverter->getConvertedDateTime($application->start_date,  'BnEn', '');
-                            $end=   $dateConverter->getConvertedDateTime($application->end_date,  'BnEn', '');
-                            $created_at=   $dateConverter->getConvertedDateTime($application->created_at,  'BnEn', '');
+                            $start=   $dateConverter->getConvertedDateTime($application->start_date,  'BnEn', 'l jS F Y');
+                            $end=   $dateConverter->getConvertedDateTime($application->end_date,  'BnEn', 'l jS F Y');
+                            $created_at=   $dateConverter->getConvertedDateTime($application->created_at,  'BnEn', 'l jS F Y');
                         @endphp
                         <div class="row">
                             <div class="col-md-4">
@@ -43,19 +43,19 @@
                         </div>
                         <br>
                         @php
-                            $year=\Carbon\Carbon::now();
-                            $now=$year->year;
-                            $app=$application->employee_id;
-                            $appp=\App\Models\Application::where('employee_id',$app)->where('status',2)->whereYear('end_date',$now)->sum('approved_total_days');
+//                            $year=\Carbon\Carbon::now();
+//                            $now=$year->year;
+//                            $app=$application->employee_id;
+//                            $appp=\App\Models\Application::where('employee_id',$app)->where('status',2)->whereYear('end_date',$now)->sum('approved_total_days');
 
-                              $app = $numto->bnNum($appp);
-                              $ap=20-$appp;
+//                              $app = $numto->bnNum($appp);
+                              $ap=20-$totalApprovedLeave->where('employee_id',$application->employee_id)->sum('approved_total_days');
                               $ap = $numto->bnNum($ap);
                         @endphp
                         <div class="row">
 
                             <div class="col-md-3"><label class="font-size-15">ভোগকৃত ছুটি</label><br>
-                                <span >{{$app}} দিন</span>
+                                <span > {{$numto->bnNum($totalApprovedLeave->where('employee_id',$application->employee_id)->sum('approved_total_days'))}}  দিন</span>
                             </div>
                             <div class="col-md-3">
                                 <label class="font-size-15">অবশিষ্ট ছুটি</label><br>
@@ -84,8 +84,8 @@
 {{--                                <a href="#"><button class="btn btn-success"  value="1">সংশোধন</button></a>--}}
                             </div>
                             <div class="col-md-3">
-                                {{--                    <a href="/confirm/reject/{{$application->id}}"> <button class="btn btn-danger"  value="0">বাতিল</button></a>--}}
-                                <a href="#"> <button class="btn btn-danger"  value="0">বাতিল</button></a>
+                                                    <a href="{{route('confirm.reject.application',$application->id)}}"> <button class="btn btn-danger"  value="0">বাতিল</button></a>
+{{--                                <a href="#"> <button class="btn btn-danger"  value="0">বাতিল</button></a>--}}
 
                             </div>
                             <div class="col-md-3"></div>

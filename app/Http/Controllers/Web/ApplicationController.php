@@ -140,6 +140,7 @@ class ApplicationController extends Controller
         $application->approved_total_days= $days+1;
         $application->approved_start_date= $r->approved_start_date;
         $application->approved_end_date= $r->approved_end_date;
+        $application->comment= $r->comment;
         $application->status= 2;
         $application->save();
 
@@ -179,9 +180,17 @@ class ApplicationController extends Controller
             ->where('applications.status',1)
             ->get();
 
-//        return  $applications;
 
-        return view('application.applicationPending', compact('applications'));
+        $year=\Carbon\Carbon::now();
+        $now=$year->year;
+
+
+        $totalApprovedLeave=Application::select('employee_id','approved_total_days')->where('approval_id',$emp->id)->where('status',2)->whereYear('end_date',$now)->get();
+//        return  $totalApprovedLeave;
+
+
+
+        return view('application.applicationPending', compact('applications','totalApprovedLeave'));
     }
 
     public function applicationApprove($id){
@@ -219,6 +228,48 @@ class ApplicationController extends Controller
 //        return redirect()->route('pending.application');
         return back();
 
+    }
+
+    public function rejectApplication($id){
+        $emp=Employee::select('id','first_name')->where('user_id',auth()->user()->id)->first();
+        $applications=Application::select("applications.*","employees.first_name","designations.designation_name")
+            ->where('approval_id',$emp->id)
+            ->leftJoin('employees','employees.id','applications.employee_id')
+            ->leftJoin('designations','employees.designation','designations.designation_id')
+            ->find($id);
+
+
+        return view('application.rejectApplication')->with('applications', $applications);
+
+    }
+
+    public function rejectApplicationStore($id,Request $r){
+        $emp=Employee::select('id','first_name')->where('user_id',auth()->user()->id)->first();
+        $application=Application::where('approval_id',$emp->id)->find($id);
+        $application->approved_total_days= 0;
+        $application->status= 3;
+        $application->comment= $r->comment;
+        $application->save();
+
+        $empuser = User::where('id', $application->employee_id)->get()->first();
+
+        $email = $empuser->email;
+//        $phone = User::where('id', $applications)->get()->first();
+        $phone = $empuser->phone_number;
+
+//        $this->sendsms($phone);
+//        $details = [
+//            'title' => 'নৈমিত্তিক ছুটি ব্যবস্থাপনা',
+//            'body' => 'আপনার ছুটির আবেদন প্রত্যাখ্যান করা হয়েছে'
+//        ];
+//        Mail::to($email)->send(new \App\Mail\MyTestMail($details));
+
+        // $number=01712345678;
+        // $message='this is a demo Example form Laravel bulksmsBD Package.';
+        // BulkSMSBD::send($number,$message);
+
+        return redirect()->route('pending.application');
+        return $r;
     }
 
     public function sendsms($phone)
