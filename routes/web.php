@@ -44,6 +44,11 @@ Route::post('application/waiting-list/data', [ApplicationController::class, 'wai
 
 Route::get('application/waiting-list', [ApplicationController::class,'WaitingApplicationList'])->name('application.waiting.list');
 
+Route::get('/pending/application', [ApplicationController::class,'PendingApplication'])->name('pending.application');
+Route::get('/pending/approve/{id}', [ApplicationController::class,'applicationApprove'])->name('application.approve');
+Route::get('/pending/applicationModifyApprove/{id}', [ApplicationController::class,'applicationModifyApprove'])->name('application.modifyApprove');
+Route::post('/pending/applicationModifyApprove/{id}', [ApplicationController::class,'applicationModifyApproveStore'])->name('application.modifyApproveStore');
+
 //---------------------- Advance Report  ---------------------------------------------//
 Route::get('/report', [ReportController::class, 'index'])->name('report');
 Route::post('/report', [ReportController::class, 'data'])->name('get.report');
