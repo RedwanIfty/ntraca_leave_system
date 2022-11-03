@@ -87,6 +87,31 @@
 
     <script src="{{ url('public/assets/js/app.js') }}"></script>
     <script src="{{ url('public/assets/js/pages/datatables.init.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+
+            notify();
+            setInterval(function(){
+                notify();
+            }, 30000);
+
+
+        });
+
+        function notify(){
+            $.ajax({
+                type: 'POST',
+                url: "{!! route('getNotification') !!}",
+                cache: false,
+                data: {_token: "{{csrf_token()}}"},
+                success: function (data) {
+
+                    $('#notification').html(data);
+                    
+                }
+            });
+        }
+    </script>
     @yield('js')
 
 </body>

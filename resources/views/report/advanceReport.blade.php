@@ -84,11 +84,11 @@
 @endsection
 @section('js')
     <script>
-
+        $(document).ready(function() {
+            $('#empName').select2();
+        });
         $(document).ready(function () {
-            $(document).ready(function() {
-                $('#empName').select2();
-            });
+
             dataTable = $('#appointmentTable').DataTable({
                 rowReorder: {
                     selector: 'td:nth-child(0)'

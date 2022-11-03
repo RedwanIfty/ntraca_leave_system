@@ -29,18 +29,18 @@
             {{--                </div> --}}
             {{--            </div> --}}
 
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{-- <img class="rounded-circle header-profile-user" src="{{asset('assets\images\users\avatar-1.jpg')}}" alt="Header Avatar"> --}}
-                    <i style="color: red; hight:20px" class="fas fa-bell">1</i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Reason:অনুমোদিত</a>
-                    <a class="dropdown-item" href="#">Reason:প্রত্যাখ্যাত</a>
-                    <a class="dropdown-item" href="{{ url('/application/list', session()->get('id')) }}">সব
-                        দেখুন</a>
-                </div>
+            <div class="dropdown d-inline-block" id="notification">
+{{--                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"--}}
+{{--                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                    --}}{{-- <img class="rounded-circle header-profile-user" src="{{asset('assets\images\users\avatar-1.jpg')}}" alt="Header Avatar"> --}}
+{{--                    <i style="color: red; hight:20px" class="fas fa-bell">1</i>--}}
+{{--                </button>--}}
+{{--                <div class="dropdown-menu dropdown-menu-right">--}}
+{{--                    <a class="dropdown-item" href="#">Reason:অনুমোদিত</a>--}}
+{{--                    <a class="dropdown-item" href="#">Reason:প্রত্যাখ্যাত</a>--}}
+{{--                    <a class="dropdown-item" href="{{ url('/application/list', session()->get('id')) }}">সব--}}
+{{--                        দেখুন</a>--}}
+{{--                </div>--}}
             </div>
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"

@@ -26,6 +26,7 @@ Route::get('/', function () {
 });
 
 Route::get('home', [DashboardController::class, 'index'])->name('home');
+Route::post('getNotification', [DashboardController::class, 'getNotification'])->name('getNotification');
 Route::get('admin/create', [AdminController::class, 'create'])->name('admin.create');
 Route::post('admin/create', [AdminController::class, 'store'])->name('admin.store');
 Route::get('admin/list', [AdminController::class, 'list'])->name('admin.list');
