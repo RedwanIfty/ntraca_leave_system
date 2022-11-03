@@ -185,7 +185,10 @@ class ApplicationController extends Controller
         $now=$year->year;
 
 
-        $totalApprovedLeave=Application::select('employee_id','approved_total_days')->where('approval_id',$emp->id)->where('status',2)->whereYear('end_date',$now)->get();
+        $totalApprovedLeave=Application::select('employee_id','approved_total_days')
+//            ->where('approval_id',$emp->id)
+            ->where('status',2)
+            ->whereYear('end_date',$now)->get();
 //        return  $totalApprovedLeave;
 
 
@@ -363,6 +366,27 @@ class ApplicationController extends Controller
             });
         return $datatables->make(true);
 
+    }
+
+    public function applicationPrint(){
+//        $application=Application::where('id',277)->first();
+        $application =Application::select("applications.*","employees.first_name","designations.designation_name")
+            ->leftJoin('application_status','application_status.id','applications.status')
+            ->leftJoin('employees','employees.id','applications.employee_id')
+            ->leftJoin('designations','employees.designation','designations.designation_id')
+//            ->leftJoin('designations','employees.designation','designations.designation_id')
+//            ->where('applications.approval_id',$emp->id)
+            ->where('applications.id',277)
+            ->first();
+
+        $totalApprovedLeave=Application::select('employee_id','approved_total_days')
+            ->where('status',2)
+            ->where('employee_id',$application->employee_id)
+            ->whereYear('end_date',Carbon::now())
+            ->sum('approved_total_days');
+
+//        return $totalApprovedLeave;
+        return view('application.print',compact('application','totalApprovedLeave'));
     }
 
 }

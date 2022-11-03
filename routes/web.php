@@ -53,6 +53,8 @@ Route::post('/pending/applicationModifyApprove/{id}', [ApplicationController::cl
 Route::get('/application/reject/{id}', [ApplicationController::class,'rejectApplication'])->name('confirm.reject.application');
 Route::post('/application/reject/{id}', [ApplicationController::class,'rejectApplicationStore'])->name('reject.applicationStore');
 
+Route::get('application/print', [ApplicationController::class,'applicationPrint'])->name('application.print');
+
 
 
 Route::get('profile', [EmployeeController::class,'profile'])->name('profile');
