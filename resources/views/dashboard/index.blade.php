@@ -132,6 +132,10 @@
                     </a>
                 </div>
 
+
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2"></div>
+
                 <div class="col-sm-4">
                     <div class="card" style="background-color:#8bc643;  border-radius: 20px">
                         <div class="card-body">
@@ -148,7 +152,7 @@
                             </div>
                             <div class="text-muted">
                                 <h4 style="color: #ffff !important;padding-left: 49px;font-size: 27px;"> ভোগকৃত ছুটি
-                                    </i></h4>
+                                  </h4>
                             </div>
                         </div>
                     </div>
@@ -174,13 +178,16 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" align="center">
+
         <div class="col-sm-4 mx-auto">
-            <a href="{{ url('/admin/pending/application') }}">
+            <a href="{{route('pending.application')}}">
                 <div class="card" style="background-color: #683091; border-radius: 20px">
                     <div class="card-body" style="text-align: center; font-size:x-large;color:#ffff;font:bolder">
                         জমাকৃত আবেদন
@@ -191,7 +198,7 @@
     </div>
     <div class="row">
         <div class="col-sm-4 mx-auto">
-            <a href="{{ url('/admin/send/application') }}">
+            <a href="{{route('application.form')}}">
                 <div class="card" style="background-color: #683091; border-radius: 20px">
                     <div class="card-body" style="text-align: center; font-size:x-large;color:#ffff;font:bolder">
                         আবেদন

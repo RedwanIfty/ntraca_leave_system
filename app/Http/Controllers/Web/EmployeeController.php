@@ -19,4 +19,15 @@ class EmployeeController extends Controller
 //        return  $users;
         return view('dashboard.admin.list',compact('users'));
     }
+
+    public function profile(){
+        $user=User::leftJoin('employees','employees.user_id','users.id')
+            ->leftJoin('branch','employees.branch','branch.branch_id')
+            ->leftJoin('designations','employees.designation','designations.designation_id')
+            ->leftJoin('role','role.role_id','users.role')
+            ->find(auth()->user()->id);
+
+//        return $user;
+        return view('employee.profile',compact('user'));
+    }
 }

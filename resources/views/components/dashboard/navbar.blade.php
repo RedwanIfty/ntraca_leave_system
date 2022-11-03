@@ -50,14 +50,10 @@
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    @if (auth()->user()->role == 2)
-                        <a class="dropdown-item" href="{{ url('/admin/profile') }}"><i
+
+                        <a class="dropdown-item" href="{{ route('profile') }}"><i
                                 class="bx bx-user font-size-16 align-middle mr-1"></i> প্রোফাইল</a>
-                    @endif
-                    @if (auth()->user()->role == 3)
-                        <a class="dropdown-item" href="{{ url('/employee/profile') }}"><i
-                                class="bx bx-user font-size-16 align-middle mr-1"></i> প্রোফাইল</a>
-                    @endif
+
 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();

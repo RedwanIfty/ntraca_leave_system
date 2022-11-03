@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\EmployeeController;
 use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\DesignationController;
 use App\Http\Controllers\Web\ApplicationController;
+use App\Http\Controllers\Web\SignatureController;
 use App\Http\Controllers\Web\ReportController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,11 @@ Route::get('/pending/applicationModifyApprove/{id}', [ApplicationController::cla
 Route::post('/pending/applicationModifyApprove/{id}', [ApplicationController::class,'applicationModifyApproveStore'])->name('application.modifyApproveStore');
 Route::get('/application/reject/{id}', [ApplicationController::class,'rejectApplication'])->name('confirm.reject.application');
 Route::post('/application/reject/{id}', [ApplicationController::class,'rejectApplicationStore'])->name('reject.applicationStore');
+
+
+
+Route::get('profile', [EmployeeController::class,'profile'])->name('profile');
+Route::post('image-upload', [ SignatureController::class, 'signatureUploadPost' ])->name('image.upload.post');
 
 //---------------------- Advance Report  ---------------------------------------------//
 Route::get('/report', [ReportController::class, 'index'])->name('report');
