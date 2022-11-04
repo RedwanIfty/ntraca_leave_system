@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\Employee;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,7 +16,13 @@ class DashboardController extends Controller
     }
     public function index()
     {
-        return view('dashboard.index');
+        $emp=Employee::where('user_id',auth()->user()->id)->first();
+        $myLeave=Application::select('employee_id','approved_total_days')
+            ->where('employee_id',$emp->id)
+            ->where('status',2)
+            ->whereYear('end_date',Carbon::now())->get();
+//        return $myLeave->sum('approved_total_days');
+        return view('dashboard.index',compact('myLeave'));
     }
 
     public function getNotification(Request $r){

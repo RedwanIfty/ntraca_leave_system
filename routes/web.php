@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\DesignationController;
 use App\Http\Controllers\Web\ApplicationController;
 use App\Http\Controllers\Web\SignatureController;
 use App\Http\Controllers\Web\ReportController;
+use App\Http\Controllers\Web\ScanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,6 +64,9 @@ Route::post('image-upload', [ SignatureController::class, 'signatureUploadPost' 
 //---------------------- Advance Report  ---------------------------------------------//
 Route::get('/report', [ReportController::class, 'index'])->name('report');
 Route::post('/report', [ReportController::class, 'data'])->name('get.report');
+
+//---------------------- Scan  ---------------------------------------------//
+Route::get('user/scan/{id}', [ScanController::class, 'scanedUser'])->name('scan');
 
 // Undefined Routes
 Route::get('/{url}', function () {

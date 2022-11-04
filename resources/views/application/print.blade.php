@@ -97,8 +97,8 @@
                 </td>
             </tr>
             <tr>
-                <td>    {!! QrCode::size(100)->generate(url('https://github.com/SimpleSoftwareIO/simple-qrcode/tree/develop/docs/en')); !!}</td>
-                <td></td>
+                <td>    {!! QrCode::size(200)->generate(route('scan',Crypt::encrypt($application->employee_id))); !!}</td>
+                <td> </td>
             </tr>
         </table>
 

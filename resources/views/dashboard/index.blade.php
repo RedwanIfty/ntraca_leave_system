@@ -147,7 +147,7 @@
                                 </div>
 
                                 <h2 style="color: #ffff !important; padding-right:5px;font-size:51px">
-                                    8 </h2>
+                                    {{$myLeave->sum('approved_total_days')}} </h2>
                                 <h4 style="color: #ffff !important;" class="font-size-54 mt-4"> দিন</h4>
                             </div>
                             <div class="text-muted">
@@ -168,7 +168,7 @@
                                 </div>
 
                                 <h2 style="color: #ffff !important; padding-right:5px;font-size:51px;">
-                                    12 </h2>
+                                    {{20-$myLeave->sum('approved_total_days')}} </h2>
                                 <h4 style="color: #ffff !important;" class="font-size-54 mt-4">দিন </h4>
                             </div>
                             <div class="text-muted">
