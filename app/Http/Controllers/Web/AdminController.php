@@ -37,7 +37,7 @@ class AdminController extends Controller
             'branch' => 'required|numeric|min:0'
         ]);
 
-        $role = Role::where('role_name', 'admin')->firstorFail();
+//        $role = Role::where('role_name', 'admin')->firstorFail();
         $designation = Designation::where('designation_id', $request['designation'])->firstorFail();
         $branch = Branch::where('branch_id', $request['branch'])->firstorFail();
 
@@ -45,10 +45,13 @@ class AdminController extends Controller
             'username' => $request['fullname'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
-            'role' => $role->role_id,
+            'role' => 2,
             'phone_number' => $request['phone'],
             'is_active' => 1
         ]);
+        $user->emp_unique_id='000'.$user->id;
+        $user->save();
+//        return $user;
 
         $employee = Employee::create([
             'first_name' => $request['fullname'],
