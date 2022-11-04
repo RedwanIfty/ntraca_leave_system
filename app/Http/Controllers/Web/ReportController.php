@@ -40,10 +40,13 @@ class ReportController extends Controller
     public function data(Request $r){
         $numto = new NumberToBangla();
         $dateConverter  =  new  BnDateTimeConverter();
-        $applications =Application::select("applications.*","designations.designation_name","employees.first_name","application_status.status_name")
+        $applications =Application::select("applications.*","designations.designation_name","employees.first_name",
+            "application_status.status_name","sent_to.first_name as approvePerson")
             ->leftJoin('application_status','application_status.id','applications.status')
             ->leftJoin('employees','employees.id','applications.employee_id')
-            ->leftJoin('designations','employees.designation','designations.designation_id');
+            ->join('employees as sent_to', 'sent_to.id', '=', 'applications.approval_id')
+            ->leftJoin('designations','employees.designation','designations.designation_id')
+            ->orderBy("applications.created_at","desc");
         if($r->empName){
             $applications=$applications->where('employee_id',$r->empName);
         }
@@ -52,7 +55,7 @@ class ReportController extends Controller
         if($r->end_dt){ $applications=$applications->where('end','<=',$r->end_dt);}
         if($r->status){ $applications=$applications->where('status',$r->status);}
 
-        $applications=$applications->get();
+//        $applications=$applications->get();
         $datatables = Datatables::of($applications)
             ->addColumn('total_days_bangla',function ($data) use ($numto){
                 return $numto->bnNum($data->applied_total_days);

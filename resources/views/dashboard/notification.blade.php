@@ -5,7 +5,10 @@
 </button>
 <div class="dropdown-menu dropdown-menu-right">
     @foreach($applications as $app)
+
     <a class="dropdown-item" href="#">{{$app->first_name}} : {{$app->comment}}</a>
+    <hr>
+
     @endforeach
 
 

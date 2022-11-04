@@ -50,6 +50,7 @@
                             <th>কারণ</th>
                             <th>ছুটিকালীন অবস্থান</th>
                             <th>আবেদনের তারিখ</th>
+                            <th>Sent To</th>
                             {{--                            <th>ভোগকৃত ছুটি</th>--}}
                             {{--                            <th>অবশিষ্ট ছুটি</th>--}}
                             <th>মন্তব্য</th>
@@ -122,6 +123,7 @@
                     {data: 'reason', name: 'reason'},
                     {data: 'stay_location', name: 'stay_location'},
                     {data: 'created_at', name: 'created_at'},
+                    {data: 'approvePerson', name: 'sent_to.first_name'},
                     // {data: 'total', name: 'total'},
                     // {data: 'status_name', name: 'application_status.status_name'},
                     { "data": function(data){
