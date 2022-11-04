@@ -42,6 +42,10 @@
     @endphp
 
     <div>
+        <div class="visible-print text-center">
+            {!! QrCode::size(100)->generate(Request::url('https://github.com/SimpleSoftwareIO/simple-qrcode/tree/develop/docs/en')); !!}
+            <p>Scan me to return to the original page.</p>
+        </div>
         <div align="right">
             তারিখঃ: {{$dateConverter->getConvertedDateTime($application->created_at,  'BnEn', 'l jS F Y')}}</div>
 
@@ -85,7 +89,7 @@
                 </td>
                 <td width="40%">
                     নিবেদক <br>
-                    স্বাক্ষরঃ <br>
+                    স্বাক্ষরঃ &nbsp; <img src="{{url('/public')}}/signature/{{ $application->signature}}" height="70"><br>
                     নামঃ {{$application->first_name}}<br>
                     পদবীঃ {{$application->designation_name}}<br>
                 </td>

@@ -27,18 +27,20 @@
                             $created_at=   $dateConverter->getConvertedDateTime($application->created_at,  'BnEn', 'l jS F Y');
                         @endphp
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label class="font-size-15">মেয়াদকাল শুরু</label><br>
                                 <span >{{$start}}</span>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label class="font-size-15">মেয়াদকাল শেষ</label><br>
                                 <span >{{$end}}</span>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label class="font-size-15">আবেদনকৃত ছুটি</label><br>
                                 <span >{{$total_days}} দিন</span>
                             </div>
+
+
 
                         </div>
                         <br>
@@ -73,7 +75,7 @@
                         </div>
                         <br>
                         <div class="row" >
-                            <div class="col-md-1" style="padding-left:102px;"></div>
+{{--                            <div class="col-md-1" style="padding-left:102px;"></div>--}}
                             <div class="col-md-3" >
 
                                                     <a href="{{route('application.approve',$application->id)}}"><button class="btn btn-success"  value="1">অনুমোদন</button></a>
@@ -88,7 +90,9 @@
 {{--                                <a href="#"> <button class="btn btn-danger"  value="0">বাতিল</button></a>--}}
 
                             </div>
-                            <div class="col-md-3"></div>
+                            <div class="col-md-3">
+                                <a href="{{route('application.print',$application->id)}}" class="btn btn-success"><span class="fa fa-print"></span></a>
+                            </div>
                             {{-- <div class="col-md-4">
                              <a href="/application/return/{{$application->id}}"><button class="btn btn-primary">ফিরিয়ে দিন</button></a>
                             </div> --}}

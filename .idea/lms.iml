@@ -126,6 +126,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/rakibhstu/number-to-bangla" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ronisaha/easy-bangla-date" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/rajurayhan/bndatetime" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/simplesoftwareio/simple-qrcode" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

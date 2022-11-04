@@ -10,7 +10,8 @@ class SignatureController extends Controller
 {
     public function signatureUploadPost(Request $request)
     {
-        $id = session('id');
+//        return $request;
+        $id = auth()->user()->id;
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);

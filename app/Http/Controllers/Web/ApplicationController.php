@@ -368,16 +368,18 @@ class ApplicationController extends Controller
 
     }
 
-    public function applicationPrint(){
+    public function applicationPrint($id){
 //        $application=Application::where('id',277)->first();
-        $application =Application::select("applications.*","employees.first_name","designations.designation_name")
+        $application =Application::select("applications.*","employees.first_name","designations.designation_name","users.signature")
             ->leftJoin('application_status','application_status.id','applications.status')
             ->leftJoin('employees','employees.id','applications.employee_id')
             ->leftJoin('designations','employees.designation','designations.designation_id')
-//            ->leftJoin('designations','employees.designation','designations.designation_id')
-//            ->where('applications.approval_id',$emp->id)
-            ->where('applications.id',277)
+            ->leftJoin('users','users.id','employees.user_id')
+//            ->where('users.approval_id',$emp->id)
+            ->where('applications.id',$id)
             ->first();
+
+//            return $application;
 
         $totalApprovedLeave=Application::select('employee_id','approved_total_days')
             ->where('status',2)

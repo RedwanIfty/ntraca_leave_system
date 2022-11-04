@@ -119,6 +119,7 @@
       <path value="$PROJECT_DIR$/vendor/rakibhstu/number-to-bangla" />
       <path value="$PROJECT_DIR$/vendor/ronisaha/easy-bangla-date" />
       <path value="$PROJECT_DIR$/vendor/rajurayhan/bndatetime" />
+      <path value="$PROJECT_DIR$/vendor/simplesoftwareio/simple-qrcode" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

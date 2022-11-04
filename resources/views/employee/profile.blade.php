@@ -101,7 +101,7 @@
 
     @if(auth()->user()->signature)
         <div class="col-md-12">
-            Signature
+            Signature <br>
             <img src="{{url('/public')}}/signature/{{ auth()->user()->signature}}" height="100">
         </div>
     @else
