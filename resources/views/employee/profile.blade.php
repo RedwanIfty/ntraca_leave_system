@@ -75,6 +75,10 @@
                         <table class="table table-nowrap mb-0">
                             <tbody>
                             <tr>
+                                <th scope="row">কর্মচারী আইডি:</th>
+                                <td>{{$user->emp_unique_id}}</td>
+                            </tr>
+                            <tr>
                                 <th scope="row">নাম:</th>
                                 <td>{{$user->username}}</td>
                             </tr>

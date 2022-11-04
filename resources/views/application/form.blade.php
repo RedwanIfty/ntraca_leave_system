@@ -45,7 +45,7 @@
                                 <select class="form-control js-example-basic-single" name="admin_id" id="admin_id" required>
                                     <option selected disabled value="">অনুমোদনকারী নির্বাচন করুন</option>
                                     @foreach ($superadmin as $admin)
-                                        <option value="{{$admin->id}}">{{$admin->username}}</option>
+                                        <option value="{{$admin->id}}">{{$admin->first_name}}</option>
                                     @endforeach
 
 
@@ -95,7 +95,7 @@
                             <div style="padding-top: 8px">
                                 <br>
 
-                                <input  type="date" id="end" name="end" class="form-control" required  autocomplete="off">
+                                <input  type="date" id="end" name="end" class="form-control"   autocomplete="off">
                             </div>
                         </div>
                         <div class="col-md-3"></div>

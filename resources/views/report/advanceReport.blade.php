@@ -123,7 +123,34 @@
                     {data: 'stay_location', name: 'stay_location'},
                     {data: 'created_at', name: 'created_at'},
                     // {data: 'total', name: 'total'},
-                    {data: 'status_name', name: 'application_status.status_name'},
+                    // {data: 'status_name', name: 'application_status.status_name'},
+                    { "data": function(data){
+
+                            // return data.status;
+                            if(data.status == 1){
+                                return ' <h3 style="color: rgb(188, 228, 94)">'+data.status_name+'</h3>';
+                            }
+                            else if(data.status == 2){
+                                return ' <h3 style="color: rgb(28, 172, 40)">'+data.status_name+'</h3>';
+                            }
+                            else if(data.status == 3){
+                                return ' <h3 style="color: red">'+data.status_name+'</h3>';
+                            }
+                            else {
+                                return data.status_name;
+                            }
+                            // return ' <div class="dropdown">\n' +
+                            //     '  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n' +
+                            //     '  </button>\n' +
+                            //     '  <div class="dropdown-menu">\n' +
+                            //     '    <a class="dropdown-item" onclick="startInQueue(this)" data-panel-id="'+data.appointmentId+'"><i class="fas fa-sign-in-alt"></i> In</a>\n' +
+                            //     '    <a class="dropdown-item" onclick="edit(this)" data-panel-id="'+data.appointmentId+'"><i class="fa fa-edit"></i>  Edit</a>\n' +
+                            //     '    <a class="dropdown-item" onclick="print(this)" data-panel-id="'+data.appointmentId+'"><i class="fa fa-print"></i> Print</a>\n' +
+                            //     '    <a class="dropdown-item" onclick="cancel(this)" data-panel-id="'+data.appointmentId+'"><i class="fas fa-window-close"></i> Cancel</a>\n' +
+                            //     '  </div>\n' +
+                            //     '</div> ';
+                        },
+                        "orderable": false, "searchable":false, "name":"selected_rows" },
 
                     // { "data": function(data){
                     //         return ' <div class="dropdown">\n' +

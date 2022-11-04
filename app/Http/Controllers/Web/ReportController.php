@@ -40,7 +40,7 @@ class ReportController extends Controller
     public function data(Request $r){
         $numto = new NumberToBangla();
         $dateConverter  =  new  BnDateTimeConverter();
-        $applications =Application::select("*")
+        $applications =Application::select("applications.*","designations.designation_name","employees.first_name","application_status.status_name")
             ->leftJoin('application_status','application_status.id','applications.status')
             ->leftJoin('employees','employees.id','applications.employee_id')
             ->leftJoin('designations','employees.designation','designations.designation_id');
@@ -61,6 +61,8 @@ class ReportController extends Controller
                 return  $dateConverter->getConvertedDateTime($data->start_date,  'BnEn', 'l jS F Y');
             })->addColumn('end',function ($data) use ($dateConverter){
                 return  $dateConverter->getConvertedDateTime($data->end_date,  'BnEn', 'l jS F Y');
+            })->addColumn('created_at',function ($data) use ($dateConverter){
+                return  $dateConverter->getConvertedDateTime($data->created_at,  'BnEn', 'l jS F Y');
             });
         return $datatables->make(true);
 

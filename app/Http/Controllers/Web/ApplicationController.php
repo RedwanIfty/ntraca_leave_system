@@ -22,7 +22,7 @@ class ApplicationController extends Controller
         $this->middleware('auth');
     }
     public function ApplicationForm(){
-        $superadmin=User::whereIn('role',[1,2])->get();
+        $superadmin=User::select('first_name','employees.id')->leftJoin('employees','employees.user_id','users.id')->whereIn('role',[2])->get();
         return view('application.form',compact('superadmin'));
     }
 
@@ -96,6 +96,9 @@ class ApplicationController extends Controller
             $application->stay_location = $request->stay;
             $application->start_date = $request->start;
             $application->end_date = $request->end;
+            if($total_days==1){
+                $application->end_date = $request->start;
+            }
             $application->applied_total_days = $total_days;
             $application->approved_total_days = 0;
             $application->status = 1;
@@ -171,6 +174,8 @@ class ApplicationController extends Controller
     public function PendingApplication()
     {
         $emp=Employee::select('id','first_name')->where('user_id',auth()->user()->id)->first();
+
+//        return $emp;
 
         $applications =Application::select("applications.*","employees.first_name","designations.designation_name")
             ->leftJoin('application_status','application_status.id','applications.status')
