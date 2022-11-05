@@ -10,7 +10,6 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use SebastianBergmann\Type\NullType;
 
 class EmployeeController extends Controller
 {
@@ -87,14 +86,16 @@ class EmployeeController extends Controller
 
     public function list()
     {
+        $listTitle = 'কর্মকর্তা/কর্মচারী তালিকা';
+
         $users = User::where('role', 3)
             ->leftJoin('employees', 'employees.user_id', 'users.id')
             ->leftJoin('branch', 'employees.branch', 'branch.branch_id')
             ->leftJoin('designations', 'employees.designation', 'designations.designation_id')
             ->where('users.is_active', 1)
             ->get();
-        //        return  $users;
-        return view('dashboard.admin.list', compact('users'));
+
+        return view('dashboard.employee.list', compact('users', 'listTitle'));
     }
 
     public function profile()
