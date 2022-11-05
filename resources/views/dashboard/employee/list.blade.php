@@ -40,12 +40,24 @@
                                                 class="fas fa-eye"></i></a>
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                 class="bx bx-edit"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                class="bx bx-trash"></i></a>
+                                        <a href="#"
+                                            onclick=" event.preventDefault(); if(confirm('ব্যবহারকারী মুছে ফেলতে চাচ্ছেন কি?')) { document.getElementById({{ $user->id }}).submit(); }"
+                                            data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                class="bx bx-trash"></i>
+                                            <form id="{{ $user->id }}"
+                                                action="{{ Route('employee.destroy', $user->id) }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        </a>
+
                                     </td>
                                 </tr>
                             @empty
-                                <tr>No Data Found</tr>
+                                <tr>
+                                    <td colspan="5">তথ্য পাওয়া যায়নি</td>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>

@@ -10,6 +10,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class EmployeeController extends Controller
 {
@@ -81,6 +82,7 @@ class EmployeeController extends Controller
             'user_id' => $user->id,
         ]);
 
+        Session::flash('success', 'ব্যবহারকারী তৈরি করা হয়েছে');
         return redirect()->route('employee.create');
     }
 
@@ -108,5 +110,10 @@ class EmployeeController extends Controller
 
         //        return $user;
         return view('dashboard.employee.profile', compact('user'));
+    }
+
+    public function destroy($id)
+    {
+        return "destroyed";
     }
 }
