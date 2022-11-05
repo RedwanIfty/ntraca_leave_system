@@ -22,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', 'home');
 
 Route::get('home', [DashboardController::class, 'index'])->name('home');
 Route::post('getNotification', [DashboardController::class, 'getNotification'])->name('getNotification');

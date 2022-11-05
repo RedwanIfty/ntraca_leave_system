@@ -13,13 +13,15 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-user"></i>
-                        <span>অ্যাডমিন</span>
+                        <span>কর্মকর্তা/কর্মচারী</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.create') }}">অ্যাডমিন যোগ করুন</a></li>
+                        <li><a href="{{ route('admin.create') }}">কর্মকর্তা/কর্মচারী যোগ করুন</a></li>
                         <li><a href="{{ route('admin.list') }}">অ্যাডমিন তালিকা</a></li>
+                        <li><a href="{{ route('employee.list') }}">কর্মকর্তা/কর্মচারী তালিকা</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-user"></i>
@@ -40,16 +42,7 @@
                         <li><a href="{{ route('branch.create') }}">শাখা যোগ করুন</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-user"></i>
-                        <span>কর্মকর্তা/কর্মচারী</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">কর্মকর্তা/কর্মচারী যোগ করুন</a></li>
-                        <li><a href="{{ route('employee.list') }}">কর্মকর্তা/কর্মচারী তালিকা</a></li>
-                    </ul>
-                </li>
+
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

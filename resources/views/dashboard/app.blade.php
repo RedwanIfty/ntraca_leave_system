@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- App favicon -->
-{{--    <link rel="shortcut icon" href="{{ url('public/assets/images/log.png') }}">--}}
+    {{--    <link rel="shortcut icon" href="{{ url('public/assets/images/log.png') }}"> --}}
 
     <title>নৈমিত্তিক ছুটি ব্যবস্থাপনা</title>
 
@@ -30,7 +30,7 @@
     <script src="{{ url('public/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- select2 -->
 
-{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />--}}
+    {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" /> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
     @yield('css')
@@ -40,8 +40,6 @@
     <div id="layout-wrapper">
         <x-dashboard.navbar />
         <x-dashboard.sidebar />
-
-
 
         <div class="main-content">
             <div class="page-content">
@@ -91,20 +89,22 @@
         $(document).ready(function() {
 
             notify();
-            setInterval(function(){
+            setInterval(function() {
                 notify();
             }, 30000);
 
 
         });
 
-        function notify(){
+        function notify() {
             $.ajax({
                 type: 'POST',
                 url: "{!! route('getNotification') !!}",
                 cache: false,
-                data: {_token: "{{csrf_token()}}"},
-                success: function (data) {
+                data: {
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(data) {
 
                     $('#notification').html(data);
 
