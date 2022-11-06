@@ -79,4 +79,56 @@
             </div>
         </div>
     </div>
+    @php
+
+        use Rakibhstu\Banglanumber\NumberToBangla;
+        use Rajurayhan\Bndatetime\BnDateTimeConverter;
+            $numto = new NumberToBangla();
+            $dateConverter  =  new  BnDateTimeConverter();
+
+    @endphp
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                        <thead>
+                        <tr>
+                            {{-- <th>#</th> --}}
+
+                            <th>আবেদনের তারিখ	</th>
+                            <th>তারিখ হতে	</th>
+                            <th>তারিখ পর্যন্ত</th>
+                            <th>আবেদনকৃত ছুটি</th>
+                            <th>অনুমোদিত ছুটি</th>
+                            <th>অবস্থান</th>
+                            <th>	কারণ</th>
+                            <th>অবস্থা </th>
+
+                        </tr>
+                        </thead>
+
+
+                        <tbody>
+                            @foreach($applications as $app)
+                            <tr>
+                                <td>{{ $dateConverter->getConvertedDateTime($app->created_at,  'BnEn', 'l jS F Y')}}</td>
+                                <td>{{ $dateConverter->getConvertedDateTime($app->start_date,  'BnEn', 'l jS F Y')}}</td>
+                                <td>{{ $dateConverter->getConvertedDateTime($app->end_date,  'BnEn', 'l jS F Y')}}</td>
+                                <td>{{ $numto->bnNum($app->applied_total_days)}} </td>
+                                <td>{{ $numto->bnNum($app->approved_total_days)}} </td>
+                                <td>{{$app->stay_location}}</td>
+                                <td>{{$app->reason}}</td>
+                                <td>{{$app->status_name}}</td>
+                            </tr>
+
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
 @endsection

@@ -36,8 +36,8 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>
-                                        <a href="{{ route('employee.show', $user->user_id) }}" data-toggle="tooltip" data-placement="top" title="details"><i
-                                                class="fas fa-eye"></i></a>
+                                        <a href="{{ route('employee.show', $user->user_id) }}" data-toggle="tooltip" data-placement="top" title="details">
+                                            <i class="fas fa-eye"></i></a>
                                         <a href="{{ route('employee.edit', $user->user_id) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                 class="bx bx-edit"></i></a>
                                         @if (auth()->user()->role == 1)
