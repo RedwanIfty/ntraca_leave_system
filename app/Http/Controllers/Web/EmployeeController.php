@@ -114,6 +114,11 @@ class EmployeeController extends Controller
         $user = User::where('id', $id)->firstorFail();
         $employee = Employee::where('user_id', $id)->firstorFail();
 
+        // check if role, designation, branch is valid or not.
+        Role::where('role_id', $request['role'])->firstorFail();
+        Designation::where('designation_id', $request['designation'])->firstorFail();
+        Branch::where('branch_id', $request['branch'])->firstorFail();
+
         $user->username = $request['fullname'];
         $user->phone_number = $request['phone'];
         $user->email = $request['email'];
