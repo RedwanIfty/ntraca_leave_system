@@ -179,6 +179,55 @@ class EmployeeController extends Controller
         return view('dashboard.employee.edit-profile', compact('user'));
     }
 
+    public function updateprofile(Request $request)
+    {
+        $request->validate([
+            'fullname' => 'required|string',
+            // 'phone' => 'required|numeric|digits:11|regex:/(01)[0-9]{9}/',
+            'phone' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $user = User::where('id', auth()->user()->id)->firstorFail();
+        $employee = Employee::where('user_id', auth()->user()->id)->firstorFail();
+
+        $user->username = $request['fullname'];
+        $user->phone_number = $request['phone'];
+        $user->email = $request['email'];
+        $user->save();
+
+        $employee->first_name = $request['fullname'];
+        $employee->phone = $request['phone'];
+        $employee->email = $request['email'];
+        $employee->save();
+
+        Session::flash('success', 'তথ্য হালনাগাদ করা হয়েছে।');
+        return redirect()->back();
+    }
+
+    public function updatepassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|string|min:6',
+            'new-password' => 'required|string|min:6',
+            'confirm-password' => 'required|string|same:new-password|min:6',
+        ]);
+
+        $user = User::where('id', auth()->user()->id)->firstorFail();
+
+        if(!Hash::check($request['password'], $user->password)) {
+            Session::flash('error', 'প্রমাণপত্রের তথ্য ভুল।');
+            return redirect()->back();
+        }
+
+        $user->password = Hash::make($request['new-password']);
+        $user->save();
+
+        Session::flash('success', 'পাসওয়ার্ড পরিবর্তন করা হয়েছে।');
+
+        return redirect()->back();
+    }
+
     public function destroy($id)
     {
         $user = User::where('id', $id)->firstorFail();
