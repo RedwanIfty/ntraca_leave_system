@@ -27,14 +27,21 @@ Route::redirect('/', 'home');
 Route::get('home', [DashboardController::class, 'index'])->name('home');
 Route::post('getNotification', [DashboardController::class, 'getNotification'])->name('getNotification');
 
-Route::get('employee/create', [EmployeeController::class, 'create'])->name('employee.create');
-Route::post('employee/create', [EmployeeController::class, 'store'])->name('employee.store');
+Route::resource('designation', DesignationController::class);
+Route::resource('branch', BranchController::class);
 
 Route::get('admin/list', [AdminController::class, 'list'])->name('admin.list');
 Route::get('employee/list', [EmployeeController::class, 'list'])->name('employee.list');
 
-Route::resource('designation', DesignationController::class);
-Route::resource('branch', BranchController::class);
+Route::get('employee/create', [EmployeeController::class, 'create'])->name('employee.create');
+Route::post('employee/create', [EmployeeController::class, 'store'])->name('employee.store');
+Route::get('employee/{id}', [EmployeeController::class, 'show'])->name('employee.show');
+Route::get('employee/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
+Route::put('employee/{id}', [EmployeeController::class, 'update'])->name('employee.update');
+Route::delete('employee/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
+
+
+
 
 //---------------------- Application ---------------------------------------------//
 Route::get('application/form', [ApplicationController::class, 'ApplicationForm'])->name('application.form');
@@ -56,6 +63,10 @@ Route::post('/application/reject/{id}', [ApplicationController::class, 'rejectAp
 Route::get('application/print/{id}', [ApplicationController::class, 'applicationPrint'])->name('application.print');
 
 Route::get('profile', [EmployeeController::class, 'profile'])->name('profile');
+Route::put('Profile/update', [EmployeeController::class, 'updateprofile'])->name('profile.updateprofile');
+Route::put('Profile/update-password', [EmployeeController::class, 'updatepassword'])->name('profile.updatepassword');
+Route::get('profile/edit', [EmployeeController::class, 'editprofile'])->name('profile.edit');
+
 Route::post('image-upload', [SignatureController::class, 'signatureUploadPost'])->name('image.upload.post');
 
 //---------------------- Advance Report  ---------------------------------------------//

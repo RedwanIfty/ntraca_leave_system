@@ -44,6 +44,25 @@
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
+
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>কৃতকার্য!</strong> <span>{{ session('success') }}</span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>দুঃখিত!</strong> <span>{{ session('error') }}</span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+
                     <!-- content -->
                     @yield('content')
                     <!-- ./content -->

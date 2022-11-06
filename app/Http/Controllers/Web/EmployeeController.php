@@ -9,8 +9,9 @@ use App\Models\Employee;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use SebastianBergmann\Type\NullType;
+use Illuminate\Support\Facades\Session;
 
 class EmployeeController extends Controller
 {
@@ -82,19 +83,82 @@ class EmployeeController extends Controller
             'user_id' => $user->id,
         ]);
 
+        Session::flash('success', 'ব্যবহারকারী তৈরি করা হয়েছে');
         return redirect()->route('employee.create');
+    }
+
+    public function edit($id)
+    {
+        $user = User::where('id', $id)->firstorFail();
+        $employee = Employee::where('user_id', $id)->firstorFail();
+
+        $designations = Designation::get();
+        $branches = Branch::get();
+        $roles = Role::where('role_id', $user->role)->get();
+
+        return view('dashboard.employee.edit', compact('user', 'employee', 'designations', 'branches', 'roles'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'fullname' => 'required|string',
+            // 'phone' => 'required|numeric|digits:11|regex:/(01)[0-9]{9}/',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'designation' => 'required|numeric|min:0',
+            'branch' => 'required|numeric|min:0',
+            'role' => 'required|numeric|min:0|max:3',
+        ]);
+
+        $user = User::where('id', $id)->firstorFail();
+        $employee = Employee::where('user_id', $id)->firstorFail();
+
+        // check if role, designation, branch is valid or not.
+        Role::where('role_id', $request['role'])->firstorFail();
+        Designation::where('designation_id', $request['designation'])->firstorFail();
+        Branch::where('branch_id', $request['branch'])->firstorFail();
+
+        $user->username = $request['fullname'];
+        $user->phone_number = $request['phone'];
+        $user->email = $request['email'];
+        $user->role = $request['role'];
+        $user->save();
+
+        $employee->first_name = $request['fullname'];
+        $employee->branch = $request['branch'];
+        $employee->phone = $request['phone'];
+        $employee->email = $request['email'];
+        $employee->designation = $request['designation'];
+        $employee->save();
+
+        Session::flash('success', 'তথ্য হালনাগাদ সম্পন্ন হয়েছে।');
+        return redirect()->back();
+    }
+
+    public function show($id)
+    {
+        $user = User::where('id', $id)->firstorFail();
+        $employee = Employee::where('user_id', $id)->firstorFail();
+        $role = Role::where('role_id', $user->role)->firstorFail();
+        $designation = Designation::where('designation_id', $employee->designation)->firstorFail();
+        $branch = Branch::where('branch_id', $employee->branch)->firstorFail();
+
+        return view('dashboard.employee.show', compact('user', 'role', 'designation', 'branch'));
     }
 
     public function list()
     {
+        $listTitle = 'কর্মকর্তা/কর্মচারী তালিকা';
+
         $users = User::where('role', 3)
             ->leftJoin('employees', 'employees.user_id', 'users.id')
             ->leftJoin('branch', 'employees.branch', 'branch.branch_id')
             ->leftJoin('designations', 'employees.designation', 'designations.designation_id')
             ->where('users.is_active', 1)
             ->get();
-        //        return  $users;
-        return view('dashboard.admin.list', compact('users'));
+
+        return view('dashboard.employee.list', compact('users', 'listTitle'));
     }
 
     public function profile()
@@ -107,5 +171,73 @@ class EmployeeController extends Controller
 
         //        return $user;
         return view('dashboard.employee.profile', compact('user'));
+    }
+
+    public function editprofile()
+    {
+        $user = auth()->user();
+        return view('dashboard.employee.edit-profile', compact('user'));
+    }
+
+    public function updateprofile(Request $request)
+    {
+        $request->validate([
+            'fullname' => 'required|string',
+            // 'phone' => 'required|numeric|digits:11|regex:/(01)[0-9]{9}/',
+            'phone' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $user = User::where('id', auth()->user()->id)->firstorFail();
+        $employee = Employee::where('user_id', auth()->user()->id)->firstorFail();
+
+        $user->username = $request['fullname'];
+        $user->phone_number = $request['phone'];
+        $user->email = $request['email'];
+        $user->save();
+
+        $employee->first_name = $request['fullname'];
+        $employee->phone = $request['phone'];
+        $employee->email = $request['email'];
+        $employee->save();
+
+        Session::flash('success', 'তথ্য হালনাগাদ করা হয়েছে।');
+        return redirect()->back();
+    }
+
+    public function updatepassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|string|min:6',
+            'new-password' => 'required|string|min:6',
+            'confirm-password' => 'required|string|same:new-password|min:6',
+        ]);
+
+        $user = User::where('id', auth()->user()->id)->firstorFail();
+
+        if(!Hash::check($request['password'], $user->password)) {
+            Session::flash('error', 'প্রমাণপত্রের তথ্য ভুল।');
+            return redirect()->back();
+        }
+
+        $user->password = Hash::make($request['new-password']);
+        $user->save();
+
+        Session::flash('success', 'পাসওয়ার্ড পরিবর্তন করা হয়েছে।');
+
+        return redirect()->back();
+    }
+
+    public function destroy($id)
+    {
+        $user = User::where('id', $id)->firstorFail();
+        $employee = Employee::where('user_id', $id)->firstorFail();
+
+        $user->delete();
+        $employee->delete();
+
+        Session::flash('success', 'ব্যবহারকারীর তথ্য মুছে ফেলা হয়েছে।');
+
+        return redirect()->back();
     }
 }

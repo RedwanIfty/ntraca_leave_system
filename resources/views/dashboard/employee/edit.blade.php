@@ -4,11 +4,11 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-flex align-items-center justify-content-between">
-                <h4 class="mb-0 font-size-18">কর্মকর্তা/কর্মচারী যোগ করুন</h4>
+                <h4 class="mb-0 font-size-18">কর্মকর্তা/কর্মচারীর তথ্য হালনাগাদ করুন</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">কর্মকর্তা/কর্মচারী</a></li>
-                        <li class="breadcrumb-item active">কর্মকর্তা/কর্মচারী যোগ</li>
+                        <li class="breadcrumb-item active">তথ্য হালনাগাদ</li>
                     </ol>
                 </div>
             </div>
@@ -19,24 +19,26 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('employee.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('employee.update', $user->id) }}">
                         @csrf
+                        @method('PUT')
+
                         <div class="row">
                             <div class="col-sm-6">
-                                <x-auth.input id='fullname' type='text' label='নাম' />
-                                <x-auth.input id='phone' type='text' label='মোবাইল' />
-                                <x-auth.input id='email' type='email' label='ইমেইল' />
-                                <x-auth.input id='password' type='password' label='পাসওয়ার্ড' />
+                                <x-auth.input id='fullname' type='text' label='নাম' :value='$user->username' />
+                                <x-auth.input id='phone' type='text' label='মোবাইল' :value='$user->phone_number' />
+                                <x-auth.input id='email' type='email' label='ইমেইল' :value='$user->email' />
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="department">পদবি</label>
-                                    <!-- <input id="department" name="department" type="text" value="{{ old('department') }}" class="form-control"> -->
                                     <select name="designation" id="department" class="form-control" required>
                                         <option selected disabled>নির্বাচন করুন</option>
                                         @foreach ($designations as $desg)
-                                            <option value="{{ $desg->designation_id }}">{{ $desg->designation_name }}
+                                            <option value="{{ $desg->designation_id }}"
+                                                @if ($employee['designation'] == $desg->designation_id) selected @endif>
+                                                {{ $desg->designation_name }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -49,7 +51,9 @@
                                     <select name="branch" class="form-control select2">
                                         <option selected disabled>নির্বাচন করুন</option>
                                         @foreach ($branches as $branch)
-                                            <option value="{{ $branch->branch_id }}">{{ $branch->branch_name }}</option>
+                                            <option value="{{ $branch->branch_id }}"
+                                                @if ($employee['branch'] == $branch->branch_id) selected @endif>{{ $branch->branch_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -58,7 +62,8 @@
                                     <select name="role" id="role" class="form-control" required>
                                         <option selected disabled>নির্বাচন করুন</option>
                                         @forelse ($roles as $role)
-                                            <option value="{{ $role->role_id }}">{{ $role->role_name }}
+                                            <option value="{{ $role->role_id }}"
+                                                @if ($user['role'] == $role->role_id) selected @endif>{{ $role->role_name }}
                                             </option>
                                         @empty
                                         @endforelse
@@ -70,7 +75,7 @@
                                 <div class="card"></div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light"> যোগ করুন</button>
+                        <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">হালনাগাদ করুন</button>
                     </form>
                 </div>
             </div>
