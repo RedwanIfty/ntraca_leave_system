@@ -63,6 +63,8 @@ Route::post('/application/reject/{id}', [ApplicationController::class, 'rejectAp
 Route::get('application/print/{id}', [ApplicationController::class, 'applicationPrint'])->name('application.print');
 
 Route::get('profile', [EmployeeController::class, 'profile'])->name('profile');
+Route::put('Profile/update', [EmployeeController::class, 'updateprofile'])->name('profile.updateprofile');
+Route::put('Profile/update-password', [EmployeeController::class, 'updatepassword'])->name('profile.updatepassword');
 Route::get('profile/edit', [EmployeeController::class, 'editprofile'])->name('profile.edit');
 
 Route::post('image-upload', [SignatureController::class, 'signatureUploadPost'])->name('image.upload.post');
