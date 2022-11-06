@@ -136,6 +136,17 @@ class EmployeeController extends Controller
         return redirect()->back();
     }
 
+    public function show($id)
+    {
+        $user = User::where('id', $id)->firstorFail();
+        $employee = Employee::where('user_id', $id)->firstorFail();
+        $role = Role::where('role_id', $user->role)->firstorFail();
+        $designation = Designation::where('designation_id', $employee->designation)->firstorFail();
+        $branch = Branch::where('branch_id', $employee->branch)->firstorFail();
+
+        return view('dashboard.employee.show', compact('user', 'role', 'designation', 'branch'));
+    }
+
     public function list()
     {
         $listTitle = 'কর্মকর্তা/কর্মচারী তালিকা';
