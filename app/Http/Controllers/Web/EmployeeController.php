@@ -173,6 +173,12 @@ class EmployeeController extends Controller
         return view('dashboard.employee.profile', compact('user'));
     }
 
+    public function editprofile()
+    {
+        $user = auth()->user();
+        return view('dashboard.employee.edit-profile', compact('user'));
+    }
+
     public function destroy($id)
     {
         $user = User::where('id', $id)->firstorFail();

@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="col-5 align-self-end">
-                            <img src="{{asset('assets\images\profile-img.png')}}" alt="" class="img-fluid">
+                            <img src="{{asset('public\assets\images\profile-img.png')}}" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-4">
-                                    <a href="/user/edit/{{$user->id}}" class="btn btn-primary waves-effect waves-light btn-sm">হালনাগাদ করুন <i class="mdi mdi-arrow-right ml-1"></i></a>
+                                    <a href="{{ route('profile.edit') }}" class="btn btn-primary waves-effect waves-light btn-sm">হালনাগাদ করুন <i class="mdi mdi-arrow-right ml-1"></i></a>
                                 </div>
                             </div>
 

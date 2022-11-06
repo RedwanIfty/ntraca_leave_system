@@ -27,6 +27,9 @@ Route::redirect('/', 'home');
 Route::get('home', [DashboardController::class, 'index'])->name('home');
 Route::post('getNotification', [DashboardController::class, 'getNotification'])->name('getNotification');
 
+Route::resource('designation', DesignationController::class);
+Route::resource('branch', BranchController::class);
+
 Route::get('admin/list', [AdminController::class, 'list'])->name('admin.list');
 Route::get('employee/list', [EmployeeController::class, 'list'])->name('employee.list');
 
@@ -38,8 +41,7 @@ Route::put('employee/{id}', [EmployeeController::class, 'update'])->name('employ
 Route::delete('employee/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
 
 
-Route::resource('designation', DesignationController::class);
-Route::resource('branch', BranchController::class);
+
 
 //---------------------- Application ---------------------------------------------//
 Route::get('application/form', [ApplicationController::class, 'ApplicationForm'])->name('application.form');
@@ -61,6 +63,8 @@ Route::post('/application/reject/{id}', [ApplicationController::class, 'rejectAp
 Route::get('application/print/{id}', [ApplicationController::class, 'applicationPrint'])->name('application.print');
 
 Route::get('profile', [EmployeeController::class, 'profile'])->name('profile');
+Route::get('profile/edit', [EmployeeController::class, 'editprofile'])->name('profile.edit');
+
 Route::post('image-upload', [SignatureController::class, 'signatureUploadPost'])->name('image.upload.post');
 
 //---------------------- Advance Report  ---------------------------------------------//
