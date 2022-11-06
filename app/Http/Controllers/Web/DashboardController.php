@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\Employee;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,13 @@ class DashboardController extends Controller
     }
     public function index()
     {
+        $userCount = User::whereIn('role', [2, 3])->count();
+        $leaveCount = Application::Where('status', '2')
+            ->where('approved_start_date', '<=', Carbon::now()->format('Y-m-d'))
+            ->where('approved_end_date', '>=', Carbon::now()->format('Y-m-d'))
+            ->count();
+        $workingCount = $userCount - $leaveCount;
+
         $myLeave = '';
         $emp = Employee::where('user_id', auth()->user()->id)->first();
         if ($emp) {
@@ -27,7 +35,7 @@ class DashboardController extends Controller
         }
 
         // return $myLeave->sum('approved_total_days');
-        return view('dashboard.index', compact('myLeave'));
+        return view('dashboard.index', compact('myLeave', 'leaveCount', 'workingCount'));
     }
 
     public function getNotification(Request $r)
