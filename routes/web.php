@@ -29,6 +29,8 @@ Route::post('getNotification', [DashboardController::class, 'getNotification'])-
 
 Route::get('employee/create', [EmployeeController::class, 'create'])->name('employee.create');
 Route::post('employee/create', [EmployeeController::class, 'store'])->name('employee.store');
+Route::get('employee/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
+Route::put('employee/{id}', [EmployeeController::class, 'update'])->name('employee.update');
 Route::delete('employee/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
 
 Route::get('admin/list', [AdminController::class, 'list'])->name('admin.list');

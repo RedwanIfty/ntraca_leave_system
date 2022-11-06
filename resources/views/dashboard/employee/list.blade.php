@@ -38,11 +38,12 @@
                                     <td>
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="details"><i
                                                 class="fas fa-eye"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                        <a href="{{ route('employee.edit', $user->user_id) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                 class="bx bx-edit"></i></a>
                                         @if (auth()->user()->role == 1)
                                             <a href="#"
                                                 onclick=" event.preventDefault(); if(confirm('ব্যবহারকারী মুছে ফেলতে চাচ্ছেন কি?')) { document.getElementById({{ $user->id }}).submit(); }"
+
                                                 data-toggle="tooltip" data-placement="top" title="Delete"><i
                                                     class="bx bx-trash"></i>
                                                 <form id="{{ $user->id }}"

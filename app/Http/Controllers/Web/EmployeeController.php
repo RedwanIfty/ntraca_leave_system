@@ -9,6 +9,7 @@ use App\Models\Employee;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -84,6 +85,50 @@ class EmployeeController extends Controller
 
         Session::flash('success', 'ব্যবহারকারী তৈরি করা হয়েছে');
         return redirect()->route('employee.create');
+    }
+
+    public function edit($id)
+    {
+        $user = User::where('id', $id)->firstorFail();
+        $employee = Employee::where('user_id', $id)->firstorFail();
+
+        $designations = Designation::get();
+        $branches = Branch::get();
+        $roles = Role::where('role_id', $user->role)->get();
+
+        return view('dashboard.employee.edit', compact('user', 'employee', 'designations', 'branches', 'roles'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'fullname' => 'required|string',
+            // 'phone' => 'required|numeric|digits:11|regex:/(01)[0-9]{9}/',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'designation' => 'required|numeric|min:0',
+            'branch' => 'required|numeric|min:0',
+            'role' => 'required|numeric|min:0|max:3',
+        ]);
+
+        $user = User::where('id', $id)->firstorFail();
+        $employee = Employee::where('user_id', $id)->firstorFail();
+
+        $user->username = $request['fullname'];
+        $user->phone_number = $request['phone'];
+        $user->email = $request['email'];
+        $user->role = $request['role'];
+        $user->save();
+
+        $employee->first_name = $request['fullname'];
+        $employee->branch = $request['branch'];
+        $employee->phone = $request['phone'];
+        $employee->email = $request['email'];
+        $employee->designation = $request['designation'];
+        $employee->save();
+
+        Session::flash('success', 'তথ্য হালনাগাদ সম্পন্ন হয়েছে।');
+        return redirect()->back();
     }
 
     public function list()
