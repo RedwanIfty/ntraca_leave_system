@@ -49,7 +49,7 @@
                                     <select name="branch" class="form-control select2">
                                         <option selected disabled>নির্বাচন করুন</option>
                                         @foreach ($branches as $branch)
-                                            <option value="{{ $branch->branch_id }}">স{{ $branch->branch_name }}</option>
+                                            <option value="{{ $branch->branch_id }}">{{ $branch->branch_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

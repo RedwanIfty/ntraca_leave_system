@@ -114,6 +114,14 @@ class EmployeeController extends Controller
 
     public function destroy($id)
     {
-        return "destroyed";
+        $user = User::where('id', $id)->firstorFail();
+        $employee = Employee::where('user_id', $id)->firstorFail();
+
+        $user->delete();
+        $employee->delete();
+
+        Session::flash('success', 'ব্যবহারকারীর তথ্য মুছে ফেলা হয়েছে।');
+
+        return redirect()->back();
     }
 }
